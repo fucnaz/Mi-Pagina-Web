@@ -44,9 +44,9 @@ app.post('/api/create-preference', async (req, res) => {
           }
         ],
         back_urls: {
-          success: `${req.protocol}://${req.get('host')}${returnPage}`,
-          failure: `${req.protocol}://${req.get('host')}/#cursos`,
-          pending: `${req.protocol}://${req.get('host')}/#cursos`
+          success: `https://${req.get('host')}${returnPage}`,
+          failure: `https://${req.get('host')}/#cursos`,
+          pending: `https://${req.get('host')}/#cursos`
         },
         auto_return: 'approved'
       }
