@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.innerHTML = '<span>Procesando pago...</span>';
         button.disabled = true;
 
-        const response = await fetch('/api/create-preference', {
+        const response = await fetch('https://mi-pagina-web-uuvo.onrender.com/api/create-preference', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
