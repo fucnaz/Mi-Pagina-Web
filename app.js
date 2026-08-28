@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Simple animation trigger
         card.style.opacity = '0';
         card.style.transform = 'scale(0.8)';
-        
+
         setTimeout(() => {
           if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
             card.style.display = 'flex';
@@ -111,10 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
-      
+
       submitBtn.innerHTML = 'Enviando...';
       submitBtn.disabled = true;
 
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.innerHTML = '<span>Procesando pago...</span>';
         button.disabled = true;
 
-        const response = await fetch('https://mi-pagina-web-uuvo.onrender.com/api/create-preference', {
+        const response = await fetch('https://www.spectracode.site/api/create-preference', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
