@@ -923,7 +923,9 @@ footer {
 }
 
 .course-features {
-  list-style: none;
+  list-style: none !important;
+  list-style-type: none !important;
+  padding-left: 0 !important;
   margin-bottom: 32px;
   display: flex;
   flex-direction: column;
@@ -931,6 +933,8 @@ footer {
 }
 
 .course-features li {
+  list-style: none !important;
+  list-style-type: none !important;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -968,7 +972,7 @@ footer {
   margin-top: 4px;
 }
 
-.course-link {
+.buy-btn, .course-link {
   width: 100%;
   padding: 14px;
   border-radius: 12px;
