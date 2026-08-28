@@ -109,22 +109,6 @@
       border-color: var(--primary-accent);
       background: rgba(255, 255, 255, 0.06);
     }
-
-    .skip-btn {
-      background: transparent;
-      border: 1px solid var(--surface-border);
-      color: var(--text-secondary);
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
-
-    .skip-btn:hover {
-      color: var(--text-primary);
-      border-color: var(--text-secondary);
-    }
   </style>
 </head>
 
@@ -164,7 +148,6 @@
         <div id="timerBar" class="timer-bar"></div>
       </div>
       <p id="timer-countdown" style="font-size: 14px; color: var(--text-secondary);">Tiempo restante: 30 segundos</p>
-      <button id="skipBtn" class="skip-btn">Omitir temporizador (Solo para pruebas)</button>
     </div>
 
     <!-- Certificate Form Card -->
@@ -199,15 +182,21 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Configuration
-      const TEST_DURATION = 30; // Seconds to simulate video watch
+      const TEST_DURATION = 7200; // 2 hours in seconds
       let timeRemaining = TEST_DURATION;
       
       const timerStatus = document.getElementById('timer-status');
       const timerCountdown = document.getElementById('timer-countdown');
       const timerBar = document.getElementById('timerBar');
       const certCard = document.getElementById('certCard');
-      const skipBtn = document.getElementById('skipBtn');
       const certForm = document.getElementById('certForm');
+
+      const formatTime = (secs) => {
+        const h = Math.floor(secs / 3600);
+        const m = Math.floor((secs % 3600) / 60);
+        const s = secs % 60;
+        return `${h > 0 ? h + 'h ' : ''}${m > 0 ? m + 'm ' : ''}${s}s`;
+      };
 
       const enableForm = () => {
         clearInterval(timerInterval);
@@ -215,7 +204,6 @@
         timerCountdown.innerHTML = 'Ya puedes solicitar tu certificado.';
         timerBar.style.width = '100%';
         certCard.classList.add('enabled');
-        skipBtn.style.display = 'none';
       };
 
       // Timer Countdown Loop
@@ -223,18 +211,12 @@
         timeRemaining--;
         const percentage = ((TEST_DURATION - timeRemaining) / TEST_DURATION) * 100;
         timerBar.style.width = `${percentage}%`;
-        timerCountdown.innerHTML = `Tiempo restante: ${timeRemaining} segundos`;
+        timerCountdown.innerHTML = `Tiempo restante: ${formatTime(timeRemaining)}`;
 
         if (timeRemaining <= 0) {
           enableForm();
         }
       }, 1000);
-
-      // Skip Button
-      skipBtn.addEventListener('click', () => {
-        enableForm();
-      });
-
       // Form Submission
       certForm.addEventListener('submit', async (e) => {
         e.preventDefault();
