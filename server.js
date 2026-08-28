@@ -28,6 +28,8 @@ const client = new MercadoPagoConfig({
 // Endpoint to create preference
 app.post('/api/create-preference', async (req, res) => {
   const { title, price } = req.body;
+  const isAntigravity = title.toLowerCase().includes('antigravity');
+  const returnPage = isAntigravity ? '/cursos-antigravity.html' : '/#cursos';
 
   try {
     const preference = new Preference(client);
@@ -42,7 +44,7 @@ app.post('/api/create-preference', async (req, res) => {
           }
         ],
         back_urls: {
-          success: `${req.protocol}://${req.get('host')}/#cursos`,
+          success: `${req.protocol}://${req.get('host')}${returnPage}`,
           failure: `${req.protocol}://${req.get('host')}/#cursos`,
           pending: `${req.protocol}://${req.get('host')}/#cursos`
         },
@@ -57,6 +59,34 @@ app.post('/api/create-preference', async (req, res) => {
   }
 });
 
+// Endpoint to submit to Google Sheets via Apps Script Web App
+app.post('/api/submit-sheet', async (req, res) => {
+  const { fullName, email, dni, course } = req.body;
+  const scriptUrl = process.env.GOOGLE_SCRIPT_URL;
+
+  if (!scriptUrl) {
+    console.warn('Advertencia: GOOGLE_SCRIPT_URL no está configurada en el archivo .env. Simulando guardado exitoso.');
+    return res.json({ status: 'success', message: 'Datos guardados (simulado, configura GOOGLE_SCRIPT_URL en .env para producción).' });
+  }
+
+  try {
+    const response = await fetch(scriptUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ fullName, email, dni, course })
+    });
+
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error('Error forwarding data to Google Sheets:', error);
+    res.status(500).json({ error: 'Error al comunicarse con Google Sheets' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
