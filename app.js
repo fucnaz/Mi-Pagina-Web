@@ -127,4 +127,48 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1500);
     });
   }
+
+  // Course Purchase Checkout Handler
+  const buyButtons = document.querySelectorAll('.buy-btn');
+  buyButtons.forEach(button => {
+    button.addEventListener('click', async (e) => {
+      const courseTitle = button.getAttribute('data-course-title');
+      const coursePrice = button.getAttribute('data-course-price');
+      const originalText = button.innerHTML;
+
+      try {
+        button.innerHTML = '<span>Procesando pago...</span>';
+        button.disabled = true;
+
+        const response = await fetch('/api/create-preference', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            title: courseTitle,
+            price: coursePrice
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Error al generar la preferencia de Mercado Pago');
+        }
+
+        const data = await response.json();
+        if (data.initPoint) {
+          // Redirect the user to Mercado Pago checkout
+          window.location.href = data.initPoint;
+        } else {
+          throw new Error('No se recibió la URL de pago.');
+        }
+      } catch (error) {
+        console.error('Checkout error:', error);
+        alert('Hubo un problema al iniciar el pago. Por favor intenta de nuevo.');
+        button.innerHTML = originalText;
+        button.disabled = false;
+      }
+    });
+  });
 });
+
