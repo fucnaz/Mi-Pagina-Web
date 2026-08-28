@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spectra Code | Desarrollo Web & Sistemas Web</title>
+  <meta name="description"
+    content="En Spectra Code creamos sitios web de alto impacto y sistemas web robustos a medida. Potencia tu negocio con tecnología de vanguardia y diseño premium.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Glow Background Orbs -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="nav-container">
+      <a href="#hero" class="logo">
+        <img src="favicon.png" alt="Spectra Code Logo">
+        Spectra<span>Code</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        &#9776;
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#hero" class="nav-link active">Inicio</a></li>
+        <li><a href="#quienes-somos" class="nav-link">Quiénes Somos</a></li>
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#catalogo" class="nav-link">Proyectos</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="video/header.mp4" type="video/mp4">
+      Tu navegador no soporta videos HTML5.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Creamos Experiencias Digitales
+        <span>Fuera de la Gravedad</span>
+      </h1>
+      <p class="hero-subtitle">
+        Desarrollo de páginas web impactantes y sistemas a medida que impulsan la automatización, eficiencia y
+        escalabilidad de tu negocio.
+      </p>
+      <div class="btn-container">
+        <a href="#catalogo" class="btn btn-primary">Ver Portafolio</a>
+        <a href="#contacto" class="btn btn-secondary">Hablemos</a>
+      </div>
+    </div>
+    <a href="#quienes-somos" class="scroll-indicator">
+      <span>Explorar</span>
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+    </a>
+  </section>
+
+  <!-- Quiénes Somos Section -->
+  <section id="quienes-somos" class="reveal">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <span class="section-tag">Sobre Nosotros</span>
+          <h2 class="section-title">Ingeniería Web de Vanguardia</h2>
+          <p>
+            En <strong>Spectra Code</strong> nos apasiona convertir ideas complejas en soluciones digitales de altísimo
+            rendimiento. Somos un equipo especializado en el diseño e implementación de productos de software premium
+            que combinan visuales atractivos con arquitecturas robustas.
+          </p>
+          <p>
+            Creemos que cada negocio merece una presencia digital excepcional y sistemas internos fluidos que eliminen
+            tareas repetitivas y permitan un crecimiento sostenido.
+          </p>
+          <a href="#servicios" class="btn btn-secondary">Nuestra Experiencia</a>
+        </div>
+        <div class="about-features">
+          <div class="glass-card feature-box">
+            <div class="feature-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h4>Alto Rendimiento</h4>
+            <p>Optimización máxima de velocidad, carga rápida y mejores prácticas técnicas.</p>
+          </div>
+          <div class="glass-card feature-box">
+            <div class="feature-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                </path>
+              </svg>
+            </div>
+            <h4>Sistemas Seguros</h4>
+            <p>Protección de datos garantizada con protocolos y arquitecturas seguras.</p>
+          </div>
+          <div class="glass-card feature-box">
+            <div class="feature-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path
+                  d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
+                </path>
+              </svg>
+            </div>
+            <h4>Diseño Responsivo</h4>
+            <p>Adaptabilidad impecable para cualquier dispositivo, móvil o escritorio.</p>
+          </div>
+          <div class="glass-card feature-box">
+            <div class="feature-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path
+                  d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z">
+                </path>
+              </svg>
+            </div>
+            <h4>Soporte Continuo</h4>
+            <p>Acompañamiento post-lanzamiento para que tu sistema nunca se detenga.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios Section -->
+  <section id="servicios" class="reveal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Lo Que Hacemos</span>
+        <h2 class="section-title">Nuestras Especialidades</h2>
+        <p class="section-desc">Diseñamos soluciones tecnológicas a la medida de los requerimientos de tu marca u
+          organización.</p>
+      </div>
+      <div class="services-grid">
+        <!-- Servicio 1: Desarrollo Web -->
+        <div class="glass-card service-card">
+          <div class="feature-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+              </path>
+            </svg>
+          </div>
+          <h3>Desarrollo Web & Landing Pages</h3>
+          <p>
+            Sitios corporativos rápidos, atractivos y diseñados estratégicamente para maximizar conversiones y
+            posicionar tu marca en la cima de los motores de búsqueda.
+          </p>
+          <ul class="service-list">
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"></path>
+              </svg>
+              Landing Pages de Alta Conversión
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"></path>
+              </svg>
+              Sitios Web Corporativos e Institucionales
+              2
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"></path>
+              </svg>
+              Portafolios Interactivos & Blogs
+            </li>
+          </ul>
+        </div>
+
+        <!-- Servicio 2: Desarrollo de Sistemas Web -->
+        <div class="glass-card service-card">
+          <div class="feature-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path
+                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+              </path>
+            </svg>
+          </div>
+          <h3>Desarrollo de Sistemas Web</h3>
+          <p>
+            Aplicaciones web robustas e interactivas para centralizar la gestión de tus procesos de negocio, simplificar
+            el control de stock, clientes, turnos y nóminas.
+          </p>
+          <ul class="service-list">
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"></path>
+              </svg>
+              Gestores de Relaciones con Clientes (CRM)
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"></path>
+              </svg>
+              Control de Inventario y Almacenes
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"></path>
+              </svg>
+              Gestión de Turnos y Agendamiento Online
+            </li>
+          </ul>
+        </div>
+
+        <!-- Servicio 3: Creación de Curriculum Vitae -->
+        <div class="glass-card service-card">
+          <div class="feature-icon"
+            style="background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(185, 39, 252, 0.1)); display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 12px; margin-bottom: 24px; color: var(--primary-accent);">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+              </path>
+            </svg>
+          </div>
+          <h3>Creación de Curriculum Vitae (Bilingüe)</h3>
+          <p>
+            Diseñamos y redactamos tu CV profesional adaptado a los estándares de la industria, optimizado para sistemas
+            ATS (Applicant Tracking Systems), tanto en inglés como en español para potenciar tu perfil profesional
+            internacional.
+          </p>
+          <ul class="service-list" style="margin-bottom: 24px;">
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"></path>
+              </svg>
+              Redacción y Traducción Profesional (Inglés & Español)
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"></path>
+              </svg>
+              Diseño Moderno Optimizado para ATS
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"></path>
+              </svg>
+              Formatos PDF Listos para Enviar e Integración con LinkedIn
+            </li>
+          </ul>
+          <div>
+            <a href="https://wa.me/5493874131449" target="_blank" class="btn whatsapp-btn-inline">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.167 1.455 4.814 1.456 5.487 0 9.954-4.41 9.957-9.822.001-2.624-1.019-5.09-2.871-6.945C16.837 1.988 14.37 1.01 11.75 1.01c-5.492 0-9.957 4.411-9.962 9.825-.001 1.814.48 3.59 1.393 5.161L2.16 20.81l4.487-1.656zM17.76 14.41c-.324-.162-1.92-.949-2.216-1.057-.297-.108-.513-.162-.73.162-.215.324-.836 1.056-1.025 1.272-.188.217-.377.244-.7.081-1.223-.613-2.148-1.077-2.987-2.514-.22-.378.22-.35.63-.173.368.16.812.95.893 1.11.08.16.08.3.04.434-.04.136-.433.974-.633 1.192-.2.217-.406.244-.73.081-1.39-.693-2.45-1.282-3.23-2.617-.204-.347-.204-1.06.315-1.579.467-.467.579-.579.73-.73.151-.151.2-.217.3-.379.099-.162.05-.3-.024-.462-.075-.162-.73-1.76-1.002-2.41-.265-.637-.534-.55-.73-.55-.19 0-.405-.027-.622-.027-.216 0-.568.081-.865.407-.297.324-1.135 1.11-1.135 2.71 0 1.6 1.162 3.142 1.324 3.358.162.217 2.287 3.493 5.54 4.896.774.333 1.378.533 1.849.683.777.247 1.485.212 2.046.128.625-.094 1.92-.785 2.19-1.543.27-.759.27-1.41.19-1.543-.08-.136-.297-.217-.622-.379z" />
+              </svg>
+              Solicitar CV por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Section -->
+  <section id="catalogo" class="reveal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Portafolio</span>
+        <h2 class="section-title">Nuestros Proyectos</h2>
+        <p class="section-desc">Explora algunos de los trabajos que hemos creado y entregado con los más altos
+          estándares de calidad.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="paginas">Desarrollo Web</button>
+        <button class="filter-btn" data-filter="sistemas">Sistemas Web</button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="portfolio-grid">
+
+        <!-- Project 1: La Junga (Desarrollo Web) -->
+        <div class="glass-card project-card" data-category="paginas">
+          <div class="project-image-wrapper">
+            <img src="image/paginas/lajunga.JPG" alt="La Junga" class="project-image">
+            <div class="project-overlay">
+              <div class="project-actions">
+                <a target="_blank" href="https://www.lajunglaproducciones.com/"
+                  class="btn btn-primary btn-sm">Consultar</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-details">
+            <span class="project-type">Desarrollo Web</span>
+            <h3 class="project-title">La Junga</h3>
+            <p class="project-description">Sitio web interactivo y adaptativo de presentación corporativa, optimizado
+              para máxima velocidad y SEO local.</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML5</span>
+              <span class="project-tag">CSS3</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">SEO</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Noirbyte (Desarrollo Web) -->
+        <div class="glass-card project-card" data-category="paginas">
+          <div class="project-image-wrapper">
+            <img src="image/paginas/noirbyte.JPG" alt="Noirbyte" class="project-image">
+            <div class="project-overlay">
+              <div class="project-actions">
+                <a target="_blank" href="https://noirbyte.pages.dev/" class="btn btn-primary">Consultar</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-details">
+            <span class="project-type">Desarrollo Web</span>
+            <h3 class="project-title">Noirbyte Software</h3>
+            <p class="project-description">Landing page de estilo tecnológico oscuro orientada a servicios de
+              ciberseguridad con animaciones y efectos dinámicos.</p>
+            <div class="project-tags">
+              <span class="project-tag">Vite</span>
+              <span class="project-tag">CSS Grid</span>
+              <span class="project-tag">Scroll Animations</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: CRM (Sistemas Web) -->
+        <div class="glass-card project-card" data-category="sistemas">
+          <div class="project-image-wrapper">
+            <img src="image/sistemas/crm.JPG" alt="Spectra CRM" class="project-image">
+            <div class="project-overlay">
+              <div class="project-actions">
+                <a target="_blank" href="https://crmdemo-euw.pages.dev/" class="btn btn-primary">Probar Demo</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-details">
+            <span class="project-type">Sistemas Web</span>
+            <h3 class="project-title">Spectra CRM</h3>
+            <p class="project-description">Plataforma interna de gestión de clientes, leads de venta e informes
+              estadísticos en tiempo real para equipos de ventas.</p>
+            <div class="project-tags">
+              <span class="project-tag">React.js</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">MongoDB</span>
+              <span class="project-tag">Charts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: SCode Almacen (Sistemas Web) -->
+        <div class="glass-card project-card" data-category="sistemas">
+          <div class="project-image-wrapper">
+            <img src="image/sistemas/scode-almacen.JPG" alt="SCode Almacén" class="project-image">
+            <div class="project-overlay">
+              <div class="project-actions">
+                <a target="_blank" href="https://scodealmacen.pages.dev/" class="btn btn-primary">Probar Demo</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-details">
+            <span class="project-type">Sistemas Web</span>
+            <h3 class="project-title">SCode Almacén</h3>
+            <p class="project-description">Software integral para control de inventarios, alertas de stock mínimo y
+              registro automático de entradas y salidas de mercancías.</p>
+            <div class="project-tags">
+              <span class="project-tag">Express</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">Barcode API</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: Spectra Sueldos (Sistemas Web) -->
+        <div class="glass-card project-card" data-category="sistemas">
+          <div class="project-image-wrapper">
+            <img src="image/sistemas/spectrasueldos.JPG" alt="Spectra Sueldos" class="project-image">
+            <div class="project-overlay">
+              <div class="project-actions">
+                <a target="_blank" href="https://sueldodemo.netlify.app/" class="btn btn-primary">Probar Demo</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-details">
+            <span class="project-type">Sistemas Web</span>
+            <h3 class="project-title">Spectra Sueldos</h3>
+            <p class="project-description">Sistema de liquidación de sueldos y salarios automatizado, generación de
+              recibos digitales y auditorías financieras.</p>
+            <div class="project-tags">
+              <span class="project-tag">Next.js</span>
+              <span class="project-tag">Supabase</span>
+              <span class="project-tag">PDF Generator</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: TurnoCode (Sistemas Web) -->
+        <div class="glass-card project-card" data-category="sistemas">
+          <div class="project-image-wrapper">
+            <img src="image/sistemas/turnocode.JPG" alt="TurnoCode" class="project-image">
+            <div class="project-overlay">
+              <div class="project-actions">
+                <a target="_blank" href="https://turnerocode.pages.dev/" class="btn btn-primary">Probar Demo</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-details">
+            <span class="project-type">Sistemas Web</span>
+            <h3 class="project-title">TurnoCode</h3>
+            <p class="project-description">Gestor inteligente de agenda y reservas de turnos online para profesionales
+              de la salud, belleza y asesorías.</p>
+            <div class="project-tags">
+              <span class="project-tag">Vue.js</span>
+              <span class="project-tag">Firebase</span>
+              <span class="project-tag">Google Calendar API</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Info Section -->
+  <section id="contacto" class="reveal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Contacto</span>
+        <h2 class="section-title">¿Listo para empezar?</h2>
+        <p class="section-desc">Escríbenos o comunícate por cualquiera de nuestros canales oficiales para iniciar tu
+          transformación digital.</p>
+      </div>
+
+      <div class="contact-info-centered">
+        <div class="contact-info">
+          <p class="contact-info-desc" style="text-align: center; max-width: 600px; margin: 0 auto 40px auto;">
+            Estamos disponibles para responder tus dudas y planificar los requerimientos de tu próximo sistema o sitio
+            web corporativo.
+          </p>
+
+          <div class="contact-details-grid">
+            <div class="glass-card info-item-card">
+              <div class="info-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                  </path>
+                </svg>
+              </div>
+              <div class="info-text">
+                <h4>Teléfono</h4>
+                <p>+54 9 387 4131449</p>
+              </div>
+            </div>
+
+            <div class="glass-card info-item-card">
+              <div class="info-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                  <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+              </div>
+              <div class="info-text">
+                <h4>Dirección</h4>
+                <p>B° Parque Gral Belgrano Block 46 Dpto 5, Salta Capital</p>
+              </div>
+            </div>
+
+            <div class="glass-card info-item-card">
+              <div class="info-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                  </path>
+                </svg>
+              </div>
+              <div class="info-text">
+                <h4>Correo Electrónico</h4>
+                <p>spectracodesalta@gmail.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 40px;">
+            <h4 style="margin-bottom: 16px; font-family: var(--font-title); font-size: 20px;">Nuestras Redes</h4>
+            <div class="social-links" style="justify-content: center;">
+              <a href="https://github.com" target="_blank" class="social-btn" aria-label="GitHub">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z" />
+                </svg>
+              </a>
+              <a href="https://linkedin.com" target="_blank" class="social-btn" aria-label="LinkedIn">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+              <a href="https://twitter.com" target="_blank" class="social-btn" aria-label="Twitter">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p class="footer-text">&copy; 2026 Spectra Code. Todos los derechos reservados. Diseñado con &hearts; para la
+        excelencia digital.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/5493874131449" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.167 1.455 4.814 1.456 5.487 0 9.954-4.41 9.957-9.822.001-2.624-1.019-5.09-2.871-6.945C16.837 1.988 14.37 1.01 11.75 1.01c-5.492 0-9.957 4.411-9.962 9.825-.001 1.814.48 3.59 1.393 5.161L2.16 20.81l4.487-1.656zM17.76 14.41c-.324-.162-1.92-.949-2.216-1.057-.297-.108-.513-.162-.73.162-.215.324-.836 1.056-1.025 1.272-.188.217-.377.244-.7.081-1.223-.613-2.148-1.077-2.987-2.514-.22-.378.22-.35.63-.173.368.16.812.95.893 1.11.08.16.08.3.04.434-.04.136-.433.974-.633 1.192-.2.217-.406.244-.73.081-1.39-.693-2.45-1.282-3.23-2.617-.204-.347-.204-1.06.315-1.579.467-.467.579-.579.73-.73.151-.151.2-.217.3-.379.099-.162.05-.3-.024-.462-.075-.162-.73-1.76-1.002-2.41-.265-.637-.534-.55-.73-.55-.19 0-.405-.027-.622-.027-.216 0-.568.081-.865.407-.297.324-1.135 1.11-1.135 2.71 0 1.6 1.162 3.142 1.324 3.358.162.217 2.287 3.493 5.54 4.896.774.333 1.378.533 1.849.683.777.247 1.485.212 2.046.128.625-.094 1.92-.785 2.19-1.543.27-.759.27-1.41.19-1.543-.08-.136-.297-.217-.622-.379z" />
+    </svg>
+  </a>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
