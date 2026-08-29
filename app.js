@@ -22,15 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navToggle.innerHTML = '&#9776;';
       });
     });
-
-    // Close menu when clicking close button
-    const navClose = document.getElementById('navClose');
-    if (navClose) {
-      navClose.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        navToggle.innerHTML = '&#9776;';
-      });
-    }
   }
 
   // Header scroll class
