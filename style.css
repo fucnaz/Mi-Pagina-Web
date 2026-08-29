@@ -22,11 +22,15 @@
   scroll-behavior: smooth;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
   font-family: var(--font-body);
-  overflow-x: hidden;
   line-height: 1.6;
 }
 
@@ -72,7 +76,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   z-index: 1000;
   transition: var(--transition-smooth);
   padding: 20px 0;
@@ -791,21 +795,26 @@ footer {
 }
 
 @media (max-width: 992px) {
+  .nav-container {
+    padding: 0 20px;
+    width: 100%;
+  }
   .nav-menu {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
+    transform: translateX(100%);
     width: 250px;
     height: 100vh;
     background: rgba(6, 7, 13, 0.95);
     backdrop-filter: blur(15px);
     flex-direction: column;
     padding: 100px 40px;
-    transition: var(--transition-smooth);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     border-left: 1px solid var(--surface-border);
   }
   .nav-menu.open {
-    right: 0;
+    transform: translateX(0);
   }
   .nav-toggle {
     display: block;
