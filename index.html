@@ -28,12 +28,13 @@
         &#9776;
       </button>
       <ul class="nav-menu" id="navMenu">
+        <button class="nav-close" id="navClose" aria-label="Cerrar menú">&times;</button>
         <li><a href="#hero" class="nav-link active">Inicio</a></li>
         <li><a href="#quienes-somos" class="nav-link">Quiénes Somos</a></li>
         <li><a href="#servicios" class="nav-link">Servicios</a></li>
         <li><a href="#catalogo" class="nav-link">Proyectos</a></li>
         <li><a href="#cursos" class="nav-link">Cursos</a></li>
-        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        <li><a href="https://wa.me/5493874131449" target="_blank" class="nav-link">Contacto</a></li>
       </ul>
     </div>
   </header>
@@ -529,8 +530,8 @@
             <div class="course-price">$20.000 <span class="currency">ARS</span></div>
             <p class="price-subtitle">Pago único con acceso de por vida</p>
           </div>
-          <button class="btn btn-secondary buy-btn" data-course-title="Desarrollo de Sistemas con Appsheet" data-course-price="20000">
-            <span>Comprar Curso</span>
+          <button class="btn btn-secondary buy-btn" data-course-title="Desarrollo de Sistemas con Appsheet" data-course-price="20000" disabled style="opacity: 0.6; cursor: not-allowed;">
+            <span>Próximamente</span>
           </button>
         </div>
       </div>
@@ -633,13 +634,7 @@
     </div>
   </footer>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/5493874131449" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24">
-      <path
-        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.167 1.455 4.814 1.456 5.487 0 9.954-4.41 9.957-9.822.001-2.624-1.019-5.09-2.871-6.945C16.837 1.988 14.37 1.01 11.75 1.01c-5.492 0-9.957 4.411-9.962 9.825-.001 1.814.48 3.59 1.393 5.161L2.16 20.81l4.487-1.656zM17.76 14.41c-.324-.162-1.92-.949-2.216-1.057-.297-.108-.513-.162-.73.162-.215.324-.836 1.056-1.025 1.272-.188.217-.377.244-.7.081-1.223-.613-2.148-1.077-2.987-2.514-.22-.378.22-.35.63-.173.368.16.812.95.893 1.11.08.16.08.3.04.434-.04.136-.433.974-.633 1.192-.2.217-.406.244-.73.081-1.39-.693-2.45-1.282-3.23-2.617-.204-.347-.204-1.06.315-1.579.467-.467.579-.579.73-.73.151-.151.2-.217.3-.379.099-.162.05-.3-.024-.462-.075-.162-.73-1.76-1.002-2.41-.265-.637-.534-.55-.73-.55-.19 0-.405-.027-.622-.027-.216 0-.568.081-.865.407-.297.324-1.135 1.11-1.135 2.71 0 1.6 1.162 3.142 1.324 3.358.162.217 2.287 3.493 5.54 4.896.774.333 1.378.533 1.849.683.777.247 1.485.212 2.046.128.625-.094 1.92-.785 2.19-1.543.27-.759.27-1.41.19-1.543-.08-.136-.297-.217-.622-.379z" />
-    </svg>
-  </a>
+  <!-- Floating WhatsApp Button removed -->
 
   <script src="app.js"></script>
 </body>

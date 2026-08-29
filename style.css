@@ -161,6 +161,10 @@ header.scrolled {
   cursor: pointer;
 }
 
+.nav-close {
+  display: none;
+}
+
 /* Hero Section with Video Header */
 .hero {
   position: relative;
@@ -432,36 +436,7 @@ section {
   gap: 30px;
 }
 
-/* Floating WhatsApp Button */
-.whatsapp-float {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 56px;
-  height: 56px;
-  background-color: #25d366;
-  color: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: var(--transition-smooth);
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
-  background-color: #20ba5a;
-}
-
-.whatsapp-float svg {
-  width: 28px;
-  height: 28px;
-  fill: currentColor;
-}
+/* Floating WhatsApp Button Removed */
 
 .whatsapp-btn-inline {
   background: #25d366 !important;
@@ -833,6 +808,22 @@ footer {
   }
   .nav-toggle {
     display: block;
+  }
+  .nav-close {
+    display: block;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: 32px;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+  }
+  .nav-close:hover {
+    color: var(--primary-accent);
+    transform: rotate(90deg);
   }
   .hero-title {
     font-size: 38px;
