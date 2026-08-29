@@ -32,6 +32,7 @@ body {
   color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.6;
+  position: relative;
 }
 
 /* Background Glowing Orbs */
@@ -816,10 +817,12 @@ footer {
     gap: 24px;
     border-left: 1px solid var(--surface-border);
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
   }
   .nav-menu.open {
     transform: translateX(0);
+    visibility: visible;
   }
   .nav-toggle {
     display: block;
