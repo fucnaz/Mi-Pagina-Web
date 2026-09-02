@@ -12,6 +12,13 @@
       max-width: 900px;
       margin: 120px auto 60px auto;
       padding: 0 24px;
+      transition: opacity 0.4s ease, filter 0.4s ease;
+    }
+
+    .antigravity-container.content-locked {
+      filter: blur(8px);
+      pointer-events: none;
+      user-select: none;
     }
 
     .video-wrapper {
@@ -109,6 +116,13 @@
       border-color: var(--primary-accent);
       background: rgba(255, 255, 255, 0.06);
     }
+
+    .form-group input[readonly] {
+      background: rgba(255, 255, 255, 0.01);
+      color: var(--text-secondary);
+      cursor: not-allowed;
+      border-color: rgba(255, 255, 255, 0.05);
+    }
   </style>
 </head>
 
@@ -118,6 +132,51 @@
   <div class="glow-orb orb-1"></div>
   <div class="glow-orb orb-2"></div>
 
+  <!-- Google Auth Gate Modal Overlay -->
+  <div id="authGate" class="auth-gate-overlay">
+    <div class="auth-gate-card">
+      <div class="auth-badge-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z" fill="url(#gate_grad)"/>
+          <defs>
+            <linearGradient id="gate_grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#00f2fe"/>
+              <stop offset="1" stop-color="#b927fc"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h2 class="auth-title">Identifícate con tu cuenta</h2>
+      <p class="auth-subtitle">Para comenzar a ver el curso de <strong>Google Antigravity</strong> y habilitar la emisión de tu certificado, continúa con tu cuenta de Google (Gmail).</p>
+      
+      <button id="googleSignInBtn" class="btn-google" type="button">
+        <svg viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+          <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+          <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.99 0 12s.45 3.84 1.25 5.42l4.03-3.15z"/>
+          <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+        </svg>
+        <span id="googleBtnText">Continuar con Google</span>
+      </button>
+
+      <div class="auth-info-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span>Acceso seguro protegido con Google Auth</span>
+      </div>
+
+      <div id="firebaseConfigAlert" class="auth-config-alert" style="display: none;">
+        <strong>ℹ️ Configuración de Firebase requerida:</strong>
+        <p style="margin-top: 6px;">Por favor abre <code>firebase-config.js</code> y coloca tus claves de Firebase Console.</p>
+        <button id="demoLoginBtn" type="button" style="margin-top: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 6px 12px; border-radius: 8px; font-size: 12px; cursor: pointer;">
+          Entrar en modo Demo (Prueba visual)
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Header -->
   <header id="header" class="scrolled">
     <div class="nav-container">
@@ -125,20 +184,35 @@
         <img src="favicon.png" alt="Spectra Code Logo">
         Spectra<span>Code</span>
       </a>
-      <a href="index.html" class="btn btn-secondary btn-sm" style="text-decoration: none;">Volver al Inicio</a>
+
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <!-- User Profile Pill (Visible when logged in) -->
+        <div id="userProfilePill" class="user-profile-pill" style="display: none;">
+          <img id="userAvatarImg" class="user-avatar" src="" alt="Avatar" style="display: none;">
+          <div id="userAvatarFallback" class="user-avatar-fallback">U</div>
+          <div class="user-info-text">
+            <span id="userNameDisplay" class="user-name">Usuario</span>
+            <span id="userEmailDisplay" class="user-email">usuario@gmail.com</span>
+          </div>
+          <button id="logoutBtn" class="btn-logout" title="Cerrar sesión">Salir</button>
+        </div>
+
+        <a href="index.html" class="btn btn-secondary btn-sm" style="text-decoration: none;">Volver al Inicio</a>
+      </div>
     </div>
   </header>
 
-  <main class="antigravity-container">
+  <!-- Main Course Content -->
+  <main id="courseContainer" class="antigravity-container content-locked">
     <div class="section-header" style="margin-bottom: 40px;">
       <span class="section-tag">Curso Exclusivo</span>
       <h1 class="section-title">Desarrollo Web con Google Antigravity</h1>
-      <p class="section-desc">¡Pago completado con éxito! Disfruta de la clase y solicita tu certificado al finalizar.</p>
+      <p class="section-desc">¡Pago y registro completados! Disfruta de la clase y solicita tu certificado al finalizar.</p>
     </div>
 
     <!-- Video Embed -->
     <div class="video-wrapper">
-      <iframe src="https://drive.google.com/file/d/1QYBkbcB950t4v61VNiK-nB0NkfJdlF-I/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe id="courseVideoIframe" src="https://drive.google.com/file/d/1QYBkbcB950t4v61VNiK-nB0NkfJdlF-I/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
     <!-- Status Panel & Timer -->
@@ -147,7 +221,7 @@
       <div class="timer-bar-container">
         <div id="timerBar" class="timer-bar"></div>
       </div>
-      <p id="timer-countdown" style="font-size: 14px; color: var(--text-secondary);">Tiempo restante: 30 segundos</p>
+      <p id="timer-countdown" style="font-size: 14px; color: var(--text-secondary);">Tiempo restante: Calculando...</p>
     </div>
 
     <!-- Certificate Form Card -->
@@ -159,7 +233,7 @@
           <input type="text" id="fullName" required placeholder="Ej. Juan Pérez">
         </div>
         <div class="form-group">
-          <label for="email">Correo Electrónico</label>
+          <label for="email">Correo Electrónico (Gmail de tu cuenta)</label>
           <input type="email" id="email" required placeholder="Ej. juan.perez@gmail.com">
         </div>
         <div class="form-group">
@@ -179,17 +253,45 @@
     </div>
   </footer>
 
-  <script>
+  <!-- Firebase & Page Logic -->
+  <script type="module">
+    import { 
+      loginWithGoogle, 
+      logoutUser, 
+      onAuthStateChangedListener, 
+      isFirebaseConfigured 
+    } from './firebase-config.js';
+
     document.addEventListener('DOMContentLoaded', () => {
-      // Configuration
-      const TEST_DURATION = 7200; // 2 hours in seconds
-      let timeRemaining = TEST_DURATION;
+      // DOM Elements
+      const authGate = document.getElementById('authGate');
+      const googleSignInBtn = document.getElementById('googleSignInBtn');
+      const googleBtnText = document.getElementById('googleBtnText');
+      const firebaseConfigAlert = document.getElementById('firebaseConfigAlert');
+      const demoLoginBtn = document.getElementById('demoLoginBtn');
       
+      const userProfilePill = document.getElementById('userProfilePill');
+      const userAvatarImg = document.getElementById('userAvatarImg');
+      const userAvatarFallback = document.getElementById('userAvatarFallback');
+      const userNameDisplay = document.getElementById('userNameDisplay');
+      const userEmailDisplay = document.getElementById('userEmailDisplay');
+      const logoutBtn = document.getElementById('logoutBtn');
+
+      const courseContainer = document.getElementById('courseContainer');
+      const fullNameInput = document.getElementById('fullName');
+      const emailInput = document.getElementById('email');
+
       const timerStatus = document.getElementById('timer-status');
       const timerCountdown = document.getElementById('timer-countdown');
       const timerBar = document.getElementById('timerBar');
       const certCard = document.getElementById('certCard');
       const certForm = document.getElementById('certForm');
+
+      // Timer Configuration
+      const TEST_DURATION = 7200; // 2 hours in seconds
+      let timeRemaining = TEST_DURATION;
+      let timerInterval = null;
+      let currentUser = null;
 
       const formatTime = (secs) => {
         const h = Math.floor(secs / 3600);
@@ -199,25 +301,152 @@
       };
 
       const enableForm = () => {
-        clearInterval(timerInterval);
+        if (timerInterval) clearInterval(timerInterval);
         timerStatus.innerHTML = '✨ ¡Clase completada! El formulario está habilitado.';
         timerCountdown.innerHTML = 'Ya puedes solicitar tu certificado.';
         timerBar.style.width = '100%';
         certCard.classList.add('enabled');
       };
 
-      // Timer Countdown Loop
-      const timerInterval = setInterval(() => {
-        timeRemaining--;
-        const percentage = ((TEST_DURATION - timeRemaining) / TEST_DURATION) * 100;
-        timerBar.style.width = `${percentage}%`;
+      const startTimer = () => {
+        if (timerInterval) return;
         timerCountdown.innerHTML = `Tiempo restante: ${formatTime(timeRemaining)}`;
+        timerInterval = setInterval(() => {
+          timeRemaining--;
+          const percentage = ((TEST_DURATION - timeRemaining) / TEST_DURATION) * 100;
+          timerBar.style.width = `${percentage}%`;
+          timerCountdown.innerHTML = `Tiempo restante: ${formatTime(timeRemaining)}`;
 
-        if (timeRemaining <= 0) {
-          enableForm();
+          if (timeRemaining <= 0) {
+            enableForm();
+          }
+        }, 1000);
+      };
+
+      const stopTimer = () => {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
         }
-      }, 1000);
-      // Form Submission
+      };
+
+      // Update UI when User is Authenticated
+      const handleUserLoggedIn = (user) => {
+        currentUser = user;
+
+        // Hide auth gate & unlock course content
+        authGate.classList.add('hidden');
+        courseContainer.classList.remove('content-locked');
+
+        // Populate User Pill in Header
+        userNameDisplay.textContent = user.displayName || 'Estudiante';
+        userEmailDisplay.textContent = user.email || '';
+
+        if (user.photoURL) {
+          userAvatarImg.src = user.photoURL;
+          userAvatarImg.style.display = 'block';
+          userAvatarFallback.style.display = 'none';
+        } else {
+          userAvatarImg.style.display = 'none';
+          userAvatarFallback.style.display = 'flex';
+          userAvatarFallback.textContent = (user.displayName || user.email || 'U').charAt(0).toUpperCase();
+        }
+
+        userProfilePill.style.display = 'flex';
+
+        // Auto-populate Certificate Form
+        if (user.displayName && !fullNameInput.value) {
+          fullNameInput.value = user.displayName;
+        }
+        if (user.email && !emailInput.value) {
+          emailInput.value = user.email;
+        }
+
+        // Start course countdown timer
+        startTimer();
+      };
+
+      // Update UI when User is Logged Out
+      const handleUserLoggedOut = () => {
+        currentUser = null;
+        authGate.classList.remove('hidden');
+        courseContainer.classList.add('content-locked');
+        userProfilePill.style.display = 'none';
+        stopTimer();
+      };
+
+      // Check if Firebase is configured
+      if (!isFirebaseConfigured()) {
+        firebaseConfigAlert.style.display = 'block';
+      }
+
+      // Check local storage demo state
+      const demoUserStored = localStorage.getItem('spectra_demo_user');
+
+      // Listen to Firebase Auth state
+      onAuthStateChangedListener((user) => {
+        if (user) {
+          localStorage.removeItem('spectra_demo_user');
+          handleUserLoggedIn(user);
+        } else if (demoUserStored) {
+          handleUserLoggedIn(JSON.parse(demoUserStored));
+        } else {
+          handleUserLoggedOut();
+        }
+      });
+
+      // Google Sign-In Button Handler
+      googleSignInBtn.addEventListener('click', async () => {
+        if (!isFirebaseConfigured()) {
+          firebaseConfigAlert.style.display = 'block';
+          alert('Configuración pendiente: Para conectar tu Google Sign-In real, ingresa las credenciales en firebase-config.js. También puedes usar el botón de "Modo Demo" abajo para probar la interfaz.');
+          return;
+        }
+
+        try {
+          googleBtnText.textContent = 'Iniciando sesión...';
+          googleSignInBtn.disabled = true;
+          await loginWithGoogle();
+          // onAuthStateChangedListener will automatically trigger handleUserLoggedIn
+        } catch (error) {
+          console.error('Error durante inicio de sesión:', error);
+          if (error.code === 'auth/popup-closed-by-user') {
+            // Usuario cerró la ventana emergente
+          } else {
+            alert('No se pudo completar el inicio de sesión con Google. Por favor, intenta de nuevo.');
+          }
+        } finally {
+          googleBtnText.textContent = 'Continuar con Google';
+          googleSignInBtn.disabled = false;
+        }
+      });
+
+      // Demo login for quick testing
+      if (demoLoginBtn) {
+        demoLoginBtn.addEventListener('click', () => {
+          const mockUser = {
+            uid: 'demo-123',
+            displayName: 'Usuario Demo',
+            email: 'usuario.demo@gmail.com',
+            photoURL: ''
+          };
+          localStorage.setItem('spectra_demo_user', JSON.stringify(mockUser));
+          handleUserLoggedIn(mockUser);
+        });
+      }
+
+      // Logout Button Handler
+      logoutBtn.addEventListener('click', async () => {
+        try {
+          localStorage.removeItem('spectra_demo_user');
+          await logoutUser();
+          handleUserLoggedOut();
+        } catch (error) {
+          console.error('Error al cerrar sesión:', error);
+        }
+      });
+
+      // Certificate Form Submission
       certForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
@@ -228,10 +457,11 @@
         submitBtn.disabled = true;
 
         const payload = {
-          fullName: document.getElementById('fullName').value,
-          email: document.getElementById('email').value,
+          fullName: fullNameInput.value,
+          email: emailInput.value,
           dni: document.getElementById('dni').value,
-          course: 'Google Antigravity'
+          course: 'Google Antigravity',
+          userUid: currentUser ? currentUser.uid : null
         };
 
         try {
@@ -247,7 +477,7 @@
             throw new Error('Error al enviar los datos');
           }
 
-          alert('¡Datos enviados con éxito! Tu certificado será generado y enviado a tu correo a la brevedad.');
+          alert('¡Datos enviados con éxito! Tu certificado será generado y enviado a tu correo (' + payload.email + ') a la brevedad.');
           certForm.reset();
           submitBtn.innerHTML = originalText;
           submitBtn.disabled = false;
